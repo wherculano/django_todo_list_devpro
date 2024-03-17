@@ -1,26 +1,30 @@
 name: Aplicacao Django
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
-    types: [opened, reopened]
+    branches: [ "main" ]
 
 jobs:
   build:
-    env:
-      PIPENV_NO_INHERIT: 1
-      PIPENV_IGNORE_VIRTUAL: 1
 
     runs-on: ubuntu-latest
-    steps: 
-    - users: actions/checkout@2
-    - name: Setup Python 3.10
-      uses: actions/settup-v1
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.10]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
       with:
-        python-version: 3.10
-    - name: Installing python
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
       run: |
-        pip install pipenv
-        pipenv sync --dev
-    - name: Running tests
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Tests
       run: |
-        pipenv run pytest webdrive/
+        pytest webdev/
