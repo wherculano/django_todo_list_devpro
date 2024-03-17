@@ -1,10 +1,12 @@
 name: Aplicacao Django
 
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
   build:
-    env:
+    env:wq
       PIPENV_NO_INHERIT: 1
       PIPENV_IGNORE_VIRTUAL: 1
 
