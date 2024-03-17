@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    env:wq
+    env:
       PIPENV_NO_INHERIT: 1
       PIPENV_IGNORE_VIRTUAL: 1
 
