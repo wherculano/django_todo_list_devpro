@@ -19,8 +19,11 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Descreva sua tarefa."
                             aria-label="Descreva sua tarefa." aria-describedby="button-addon2" name="nome">
-                        <button type="submit" class="btn btn-primary" id="button-addon2">Salvar</button>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary" id="button-addon2">Salvar</button>
+                        </div>
                     </div>
+                    <small class='form-text text-muted'>{{ form.nome.erros }}</small>
                 </form>
             </div>
         </div>
