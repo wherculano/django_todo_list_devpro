@@ -35,7 +35,7 @@ def test_formulario_presente(response: HttpResponse) -> None:
     Args:
         response (HttpResponse): Resposta obtida pela página.
     """
-    assertContains(response, '<form>')
+    assertContains(response, '<form')
 
 
 def test_botao_salvar_presente(response: HttpResponse) -> None:
